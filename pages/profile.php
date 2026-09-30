@@ -25,7 +25,8 @@ if ($_SESSION['logged'] != 'true') {
     <!-- navbar starts here -->
     <div class="nav navbar navbar-expand-lg bg-dark navbar-dark py-3 justify-content-between">
         <div class="container">
-            <a href="./profile.php" class="navbar-brand"><img src="../images/logo.png" width="100%" height="100%" alt=""></a>
+            <a href="./profile.php" class="navbar-brand"><img src="../images/logo.png" width="100%" height="100%"
+                    alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#searchBar">
                 <i class="bi bi-search"></i>
             </button>
@@ -52,7 +53,8 @@ if ($_SESSION['logged'] != 'true') {
                                 <li class="nav-item mx-3 text-danger">
 
                                     <a href="./myAccount.php" class="text-light text-decoration-none">
-                                        <i class="bi bi-person-circle h3" onMouseOver="this.style.color='#0d6efd'" onMouseOut="this.style.color='#FFF'"></i>
+                                        <i class="bi bi-person-circle h3" onMouseOver="this.style.color='#0d6efd'"
+                                            onMouseOut="this.style.color='#FFF'"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -106,7 +108,7 @@ if ($_SESSION['logged'] != 'true') {
 
                     if (isset($_POST['search'])) {
                         $client = $_POST['client'];
-                        $sql = "SELECT A.name,A.address, A.contact, B.type, B.status,  B.balance, B.bDate, B.bid, A.aid, B.comments FROM users AS U, accounts AS A, balance AS B WHERE U.uid=A.uid AND A.aid=B.aid AND U.uid={$_SESSION['uid']} AND A.name LIKE '%{$client}%';";
+                        $sql = "SELECT A.name,A.address, A.contact, B.type, B.status,  B.balance, B.bDate, B.bid, A.aid, B.comments FROM users AS U, accounts AS A, balance AS B WHERE U.uid=A.uid AND A.aid=B.aid AND A.name LIKE '%{$client}%' AND U.uid={$_SESSION['uid']};";
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
